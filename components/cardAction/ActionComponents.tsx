@@ -11,14 +11,15 @@ const ActionComponents = ({
   path: string;
 }) => {
   return (
-    <ImageBackground
-      source={img as any}
-      className=" h-32 bg-purple-500 rounded-xl    items-center flex justify-center "
+    <Link
+      href={path as any}
+      className=" h-32 bg-primary_250  rounded-xl overflow-hidden   items-center  justify-center "
     >
-      <Link href={path as any}>
-        <Text>{title}</Text>
-      </Link>
-    </ImageBackground>
+      <View className="w-full  h-full items-center justify-center gap-y-2">
+        <Image source={img as any} className=" h-16 w-16 " />
+        <Text className="text-white">{title}</Text>
+      </View>
+    </Link>
   );
 };
 

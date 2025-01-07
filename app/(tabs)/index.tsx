@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Image } from "react-native";
 import ActionComponents from "@/components/cardAction/ActionComponents";
 import CardCategory from "@/components/cardAction/CardCategory";
+import { icons } from "@/constants";
 
 const HomeScreen = () => {
   const [fakeTodo] = useState([
-    { path: "/", title: "Tao de", img: "a.png" },
-    { path: "/", title: "Lam de", img: "a.png" },
-    { path: "/", title: "Tao de", img: "a.png" },
-    { path: "/", title: "Lam de", img: "a.png" },
+    { path: "/", title: "Tao de", img: icons.point },
+    { path: "/", title: "Lam de", img: icons.point },
+    { path: "/", title: "Tao de", img: icons.point },
+    { path: "/", title: "Lam de", img: icons.point },
   ]);
 
   const [fakeData] = useState([
@@ -22,10 +23,26 @@ const HomeScreen = () => {
     { path: "/", title: "Lam de", img: "a.png" },
   ]);
 
+  console.log(icons.user);
+
   const renderHeader = () => (
-    <View className="p-6">
-      <Text className="text-white text-lg">Welcome back, My student</Text>
-      <Text className="text-white text-sm mt-1">What will you do today !!</Text>
+    <View className=" bg-primary_200 px-6 pt-12 w-full">
+      <View className="flex-row justify-between w-full items-center">
+        <View className="flex-row">
+          <Image source={icons.user} className="w-12 h-12" />
+          <View className=" text-center flex-col justify-center ml-3">
+            <Text className="text-white">Nguyễn Văn A</Text>
+            <Text className="text-white text-[10px] ">Tài khoản thường</Text>
+          </View>
+        </View>
+        <View className="flex-row items-center gap-1">
+          <Text className="text-yellow-400 font-bold">100</Text>
+          <Image source={icons.point} className="w-8 h-8 " />
+        </View>
+      </View>
+      <Text className="text-white text-[10px] py-5 ">
+        Welcome back, My student,What will you do today !!
+      </Text>
     </View>
   );
 
@@ -69,18 +86,23 @@ const HomeScreen = () => {
 
   return (
     <FlatList
-      className="h-screen bg-slate-950"
+      className="h-screen bg-primary_200 "
       data={[]}
       keyExtractor={(item, index) => index.toString()}
       renderItem={null}
       ListHeaderComponent={
-        <View className="p-6">
+        <View className="">
           {renderHeader()}
-          {renderActionSection()}
-          {renderCategorySection()}
+          <View className="p-6 ">
+            {renderActionSection()}
+            {renderCategorySection()}
+          </View>
         </View>
       }
-      contentContainerStyle={{ backgroundColor: "#2a3164", flexGrow: 1 }}
+      contentContainerStyle={{
+        backgroundColor: "#2a3164",
+        flexGrow: 1,
+      }}
     />
   );
 };
