@@ -1,137 +1,88 @@
-import React from "react";
-import { Text, View, ScrollView, Dimensions } from "react-native";
-import ActionComponents from "@/components/cardAction/ActionComponents"; // Giả sử bạn có ActionComponents
+import React, { useState } from "react";
+import { View, Text, FlatList } from "react-native";
+import ActionComponents from "@/components/cardAction/ActionComponents";
 import CardCategory from "@/components/cardAction/CardCategory";
 
-const HomeScreeen = () => {
-  const fakeTodo = [
-    {
-      path: "/",
-      title: "Tao de",
-      img: "a.png",
-    },
-    {
-      path: "/",
-      title: "Lam de",
-      img: "a.png",
-    },
-    {
-      path: "/",
-      title: "Tim de",
-      img: "a.png",
-    },
-    {
-      path: "/",
-      title: "Tim de",
-      img: "a.png",
-    },
-  ];
-  const fakeData = [
-    {
-      path: "/",
-      title: "Tao de",
-      img: "a.png",
-    },
-    {
-      path: "/",
-      title: "Lam de",
-      img: "a.png",
-    },
-    {
-      path: "/",
-      title: "Tim de",
-      img: "a.png",
-    },
-    {
-      path: "/",
-      title: "Tim de",
-      img: "a.png",
-    },
-    {
-      path: "/",
-      title: "Tao de",
-      img: "a.png",
-    },
-    {
-      path: "/",
-      title: "Lam de",
-      img: "a.png",
-    },
-    {
-      path: "/",
-      title: "Tim de",
-      img: "a.png",
-    },
-    {
-      path: "/",
-      title: "Tim de",
-      img: "a.png",
-    },
-  ];
+const HomeScreen = () => {
+  const [fakeTodo] = useState([
+    { path: "/", title: "Tao de", img: "a.png" },
+    { path: "/", title: "Lam de", img: "a.png" },
+    { path: "/", title: "Tao de", img: "a.png" },
+    { path: "/", title: "Lam de", img: "a.png" },
+  ]);
 
-  const { width: screenWidth } = Dimensions.get("window");
+  const [fakeData] = useState([
+    { path: "/", title: "Tim de", img: "a.png" },
+    { path: "/", title: "Lam de", img: "a.png" },
+    { path: "/", title: "Tim de", img: "a.png" },
+    { path: "/", title: "Lam de", img: "a.png" },
+    { path: "/", title: "Tim de", img: "a.png" },
+    { path: "/", title: "Lam de", img: "a.png" },
+    { path: "/", title: "Tim de", img: "a.png" },
+    { path: "/", title: "Lam de", img: "a.png" },
+  ]);
+
+  const renderHeader = () => (
+    <View className="p-6">
+      <Text className="text-white text-lg">Welcome back, My student</Text>
+      <Text className="text-white text-sm mt-1">What will you do today !!</Text>
+    </View>
+  );
+
+  const renderActionSection = () => (
+    <>
+      <Text className="text-white my-5">Hành động</Text>
+      <FlatList
+        data={fakeTodo}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View className="w-[48%] mb-4">
+            <ActionComponents
+              img={item.img}
+              title={item.title}
+              path={item.path}
+            />
+          </View>
+        )}
+        numColumns={2}
+        columnWrapperStyle={{ justifyContent: "space-between" }}
+      />
+    </>
+  );
+
+  const renderCategorySection = () => (
+    <>
+      <Text className="text-white  my-5">Danh mục</Text>
+      <FlatList
+        data={fakeData}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View className="w-[23%] mb-4 ">
+            <CardCategory img={item.img} title={item.title} path={item.path} />
+          </View>
+        )}
+        numColumns={4}
+        columnWrapperStyle={{ justifyContent: "space-between" }}
+      />
+    </>
+  );
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#191e47" }}>
-      <ScrollView
-        className="p-3 h-screen"
-        style={{ backgroundColor: "#2a3164" }}
-      >
-        <View
-          style={{
-            paddingHorizontal: 30,
-            height: 200,
-            borderRadius: 20,
-          }}
-          className="pt-16"
-        >
-          <Text style={{ fontSize: 15 }} className="text-white">
-            Welcome back, My student
-          </Text>
-          <Text style={{ fontSize: 10, marginTop: 5 }} className="text-white">
-            What will you do today !!
-          </Text>
+    <FlatList
+      className="h-screen bg-slate-950"
+      data={[]}
+      keyExtractor={(item, index) => index.toString()}
+      renderItem={null}
+      ListHeaderComponent={
+        <View className="p-6">
+          {renderHeader()}
+          {renderActionSection()}
+          {renderCategorySection()}
         </View>
-        <View className=" h-screen">
-          <Text className="text-white pl-2 my-5">Hành động</Text>
-
-          <View
-            style={{
-              marginTop: 10,
-              flexDirection: "row", // Căn các phần tử theo hàng
-              flexWrap: "wrap", // Cho phép các phần tử xuống dòng khi không đủ chỗ
-            }}
-          >
-            {fakeTodo.map((e, _i) => (
-              <View
-                key={_i}
-                style={{ width: screenWidth / 2 - 20, marginBottom: 10 }}
-              >
-                <ActionComponents img={e.img} title={e.title} path={e.path} />
-              </View>
-            ))}
-          </View>
-          <Text className="text-white pl-2 my-5">Danh mục </Text>
-
-          <View
-            style={{
-              flexDirection: "row", // Căn các phần tử theo hàng
-              flexWrap: "wrap", // Cho phép các phần tử xuống dòng khi không đủ chỗ
-            }}
-          >
-            {fakeData.map((e, _i) => (
-              <View
-                key={_i}
-                style={{ width: screenWidth / 4 - 10, marginBottom: 10 }}
-              >
-                <CardCategory img={e.img} title={e.title} path={e.path} />
-              </View>
-            ))}
-          </View>
-        </View>
-      </ScrollView>
-    </View>
+      }
+      contentContainerStyle={{ backgroundColor: "#2a3164", flexGrow: 1 }}
+    />
   );
 };
 
-export default HomeScreeen;
+export default HomeScreen;

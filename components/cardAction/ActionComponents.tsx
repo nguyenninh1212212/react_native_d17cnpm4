@@ -13,7 +13,7 @@ const ActionComponents = ({
   return (
     <ImageBackground
       source={img as any}
-      className=" h-32 bg-purple-300 rounded-xl  ml-2  items-center flex justify-center "
+      className=" h-32 bg-purple-500 rounded-xl    items-center flex justify-center "
     >
       <Link href={path as any}>
         <Text>{title}</Text>

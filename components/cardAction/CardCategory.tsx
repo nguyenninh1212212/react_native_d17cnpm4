@@ -1,5 +1,5 @@
 import { Link } from "expo-router";
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, Image } from "react-native";
 
 const CardCategory = ({
   img,
@@ -11,14 +11,15 @@ const CardCategory = ({
   path: string;
 }) => {
   return (
-    <ImageBackground
-      source={img as any}
-      className=" h-20 w-20  bg-purple-300 rounded-xl  ml-2  items-center flex justify-center  "
+    <Link
+      href={path as any}
+      className=" h-20 w-full  bg-purple-300 rounded-xl "
     >
-      <Link href={path as any}>
+      <View className="">
+        <Image source={{ uri: img }} />
         <Text>{title}</Text>
-      </Link>
-    </ImageBackground>
+      </View>
+    </Link>
   );
 };
 
