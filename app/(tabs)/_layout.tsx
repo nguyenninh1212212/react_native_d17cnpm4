@@ -1,10 +1,9 @@
 import { Tabs } from "expo-router";
 import React, { useRef, useEffect } from "react";
-import { Animated, Platform, View } from "react-native";
-
+import { Animated, Platform } from "react-native";
+import { ViewStyle } from "react-native";
 import { HapticTab } from "@/components/HapticTab";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import TabBarBackground from "@/components/ui/TabBarBackground";
+import { IconSymbol, IconSymbolName } from "@/components/ui/IconSymbol";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
@@ -44,7 +43,7 @@ function AnimatedTabIcon({
         width: 75,
         height: 75,
         borderRadius: 100,
-        backgroundColor: "#ffffff",
+        backgroundColor: "#454e91",
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
@@ -52,7 +51,7 @@ function AnimatedTabIcon({
     >
       <Animated.View
         style={{
-          backgroundColor: focused ? "#9fd7f9" : "",
+          backgroundColor: focused ? "#ffffff" : "",
           borderRadius: 100,
           width: 60,
           height: 60,
@@ -62,9 +61,8 @@ function AnimatedTabIcon({
       >
         <IconSymbol
           size={focused ? 35 : 28}
-          backgroundColor={focused ? "#ffffff" : "transparent"}
-          name={name}
-          color={focused ? "#ffffff" : "#212121"}
+          name={name as IconSymbolName}
+          color={focused ? "#373d70" : "#ffffff"}
         />
       </Animated.View>
     </Animated.View>
@@ -78,21 +76,32 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        headerShown: true,
+        headerShown: false,
+        headerTransparent: false,
         tabBarButton: HapticTab,
         tabBarStyle: Platform.select({
           ios: styles,
           android: styles,
-          default: {},
+          default: styles,
         }),
+        headerStyle: {
+          backgroundColor: "transparent", // Màu nền của header (nếu cần)
+          height: 0, // Điều chỉnh chiều cao header (mặc định thường khoảng 56px)
+          marginTop: 0, // Loại bỏ khoảng cách trên
+          paddingTop: 0, // Loại bỏ padding trên header
+        },
       }}
     >
       <Tabs.Screen
-        name="index2"
+        name="Home/index2"
         options={{
           title: "",
           tabBarIcon: ({ color, focused }) => (
-            <AnimatedTabIcon name="hand.wave" color={color} focused={focused} />
+            <AnimatedTabIcon
+              name={"hand.wave" as string}
+              color={color}
+              focused={focused}
+            />
           ),
         }}
       />
@@ -102,7 +111,7 @@ export default function TabLayout() {
           title: "",
           tabBarIcon: ({ color, focused }) => (
             <AnimatedTabIcon
-              name="house.fill"
+              name={"house.fill" as string}
               color={color}
               focused={focused}
             />
@@ -110,12 +119,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="index3"
+        name="Home/index3"
         options={{
           title: "",
           tabBarIcon: ({ color, focused }) => (
             <AnimatedTabIcon
-              name="pin.square.fill"
+              name={"pin.square.fill" as string}
               color={color}
               focused={focused}
             />
@@ -125,8 +134,6 @@ export default function TabLayout() {
     </Tabs>
   );
 }
-
-import { ViewStyle } from "react-native";
 
 const styles: ViewStyle = {
   position: "absolute",
@@ -139,7 +146,8 @@ const styles: ViewStyle = {
   borderTopWidth: 0,
   borderTopColor: "transparent",
   shadowColor: "#000",
-  shadowOffset: { width: 0, height: 4 },
+  shadowOffset: { width: 4, height: 4 },
   shadowOpacity: 0.1,
   shadowRadius: 5,
+  backgroundColor: "#454e91",
 };
