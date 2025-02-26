@@ -22,7 +22,7 @@ function AnimatedTabIcon({
     if (focused) {
       // Move up
       Animated.spring(translateY, {
-        toValue: -30,
+        toValue: -20,
         friction: 4,
         useNativeDriver: true,
       }).start();
@@ -51,7 +51,7 @@ function AnimatedTabIcon({
     >
       <Animated.View
         style={{
-          backgroundColor: focused ? "#ffffff" : "",
+          backgroundColor: focused ? "#f021ff" : "",
           borderRadius: 100,
           width: 60,
           height: 60,
@@ -62,7 +62,7 @@ function AnimatedTabIcon({
         <IconSymbol
           size={focused ? 35 : 28}
           name={name as IconSymbolName}
-          color={focused ? "#373d70" : "#ffffff"}
+          color={focused ? "#ffffff" : "#828cce"}
         />
       </Animated.View>
     </Animated.View>
