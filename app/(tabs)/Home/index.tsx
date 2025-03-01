@@ -10,6 +10,7 @@ import {
 import ActionComponents from "@/components/cardAction/ActionComponents";
 import CardCategory from "@/components/cardAction/CardCategory";
 import { icons } from "@/constants";
+import { Ionicons } from "@expo/vector-icons";
 
 const HomeScreen = () => {
   const [fakeTodo] = useState([
@@ -56,6 +57,8 @@ const HomeScreen = () => {
   const renderActionSection = () => (
     <>
       <Text className="text-white my-5">Hành động</Text>
+      <Ionicons name="hammer" size={30} color={"red"} />
+
       <FlatList
         data={fakeTodo}
         keyExtractor={(item, index) => index.toString()}
