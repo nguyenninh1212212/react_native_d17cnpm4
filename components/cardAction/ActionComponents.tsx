@@ -1,5 +1,5 @@
 import { Link } from "expo-router";
-import { Text, SafeAreaView, View, Image, ImageBackground } from "react-native";
+import { Text, View, Image, ImageBackground } from "react-native";
 
 const ActionComponents = ({
   img,

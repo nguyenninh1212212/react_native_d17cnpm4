@@ -5,4 +5,8 @@ export const icons = {
   quiz: require("@/assets/images/quiz.png"),
   search: require("@/assets/images/search.png"),
   doquiz: require("@/assets/images/doquiz.png"),
+  folder: require("@/assets/images/folder.png"),
+  notififcation: require("@/assets/images/notification.png"),
+  home: require("@/assets/images/home.png"),
+  profile: require("@/assets/images/profile.png"),
 };
