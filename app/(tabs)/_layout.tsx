@@ -44,6 +44,14 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="Auth/Login/index"
+        options={{
+          tabBarIcon: () => (
+            <Ionicons name="notifications" size={30} color={"white"} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
