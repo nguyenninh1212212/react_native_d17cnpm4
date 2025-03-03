@@ -4,8 +4,10 @@ import { Feather } from "@expo/vector-icons";
 import QuizCard from "@/components/Card/QuizCard";
 import QuizCardCreate from "@/components/Card/QuizCardCreate";
 import { fakeQuizCreatedData } from "@/fakedata";
+import { useRouter } from "expo-router";
 
 export default function HomeScreen() {
+  const route = useRouter();
   return (
     <ScrollView className="flex-1  bg-primary_200 ">
       {/* Header */}
@@ -17,6 +19,7 @@ export default function HomeScreen() {
             <TextInput
               className="flex-1 ml-2 text-gray-700"
               placeholder="Tìm kiếm đề thi..."
+              onPress={() => route.push("/Home/_search")}
             />
           </View>
         </View>

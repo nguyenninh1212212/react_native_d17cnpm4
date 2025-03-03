@@ -7,12 +7,13 @@ import {
   ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import QuizCard from "@/components/Card/QuizCard";
 
 const SearchScreen = () => {
   const [searchText, setSearchText] = useState("");
 
   return (
-    <View className="flex-1 bg-[#0C1D57] p-4">
+    <View className="flex-1 bg-[#0C1D57] p-4 pt-20">
       {/* Thanh tìm kiếm */}
       <View className="flex-row items-center bg-white p-2 rounded-lg mb-3">
         <TextInput
@@ -42,22 +43,8 @@ const SearchScreen = () => {
       {/* Kết quả tìm kiếm */}
       <Text className="text-white font-bold text-lg mb-3">Kết quả</Text>
       <ScrollView className="space-y-3">
-        {[...Array(5)].map((_, index) => (
-          <View
-            key={index}
-            className="bg-[#1A2C80] p-3 rounded-lg flex-row items-center"
-          >
-            <View className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
-              <Text className="text-white font-bold text-lg">HTML</Text>
-            </View>
-            <View className="ml-3 flex-1">
-              <Text className="text-white font-bold">What is HTML/CSS?</Text>
-              <Text className="text-gray-300">Nguyễn Minh - 10 phút trước</Text>
-            </View>
-            <View className="bg-yellow-500 px-2 py-1 rounded-full">
-              <Text className="text-black font-bold">4.5</Text>
-            </View>
-          </View>
+        {[...Array(4)].map((_, index) => (
+          <QuizCard />
         ))}
       </ScrollView>
     </View>
@@ -65,4 +52,3 @@ const SearchScreen = () => {
 };
 
 export default SearchScreen;
-    
