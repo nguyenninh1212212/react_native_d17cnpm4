@@ -1,17 +1,20 @@
 import { useRouter } from "expo-router";
-import React from "react";
-import { View, Text, Image } from "react-native";
-import { Card, Avatar } from "react-native-paper";
+import React, { useCallback } from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import { Avatar } from "react-native-paper";
 
 const QuizCard = () => {
-  const route = useRouter();
-  const click = () => {
-    route.push("/");
-  };
+  const router = useRouter();
+  const handlePress = useCallback(() => {
+    router.push({
+      pathname: "/Exam/[id]",
+      params: { id: "456" },
+    });
+  }, [router]);
   return (
-    <Card
+    <TouchableOpacity
       className="bg-white rounded-xl py-1 my-3 px-2  shadow-lg"
-      onPress={click}
+      onPress={handlePress}
     >
       <View className="flex-row items-center">
         {/* Hình ảnh logo bên trái */}
@@ -47,7 +50,7 @@ const QuizCard = () => {
           <Text className="text-base font-bold text-gray-800">26/30</Text>
         </View>
       </View>
-    </Card>
+    </TouchableOpacity>
   );
 };
 

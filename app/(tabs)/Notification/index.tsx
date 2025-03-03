@@ -2,7 +2,7 @@ import React from "react";
 import { Text } from "react-native";
 
 const index = () => {
-  return <Text>Profile</Text>;
+  return <Text>Notification</Text>;
 };
 
 export default index;

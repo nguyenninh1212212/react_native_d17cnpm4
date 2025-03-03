@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const HomeScreen3 = () => {
+const index = () => {
   return (
     <View className="w-screen h-screen flex justify-center items-center">
       <Text className="text-red-500">Trịnh Thị Thu Huyền</Text>
@@ -9,4 +9,4 @@ const HomeScreen3 = () => {
   );
 };
 
-export default HomeScreen3;
+export default index;

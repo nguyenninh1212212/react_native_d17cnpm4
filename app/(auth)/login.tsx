@@ -15,7 +15,7 @@ export default function App() {
   };
 
   return (
-    <View className="flex-1 justify-center bg-blue-900 px-6">
+    <View className="flex-1 justify-center bg-primary_100 px-6">
       <Text className="text-3xl font-bold text-center text-yellow-400 mb-6">
         Quizz App
       </Text>
@@ -23,7 +23,7 @@ export default function App() {
       {/* Email Input */}
       <Text className="text-yellow-400 mb-2">Tài khoản</Text>
       <TextInput
-        className="bg-blue-800 text-white p-3 rounded-md mb-4"
+        className="bg-primary_250 text-white p-3 rounded-full mb-4 py-5"
         placeholder="Nhập tài khoản"
         placeholderTextColor="#bbb"
         keyboardType="email-address"
@@ -35,9 +35,9 @@ export default function App() {
 
       {/* Password Input */}
       <Text className="text-yellow-400 mb-2">Mật khẩu</Text>
-      <View className="flex-row items-center bg-blue-800 rounded-md px-3">
+      <View className="flex-row items-center bg-primary_250  px-3 rounded-full">
         <TextInput
-          className="flex-1 text-white py-3"
+          className="flex-1 text-white py-5 "
           placeholder="Nhập mật khẩu"
           placeholderTextColor="#bbb"
           secureTextEntry={secureText}
@@ -67,13 +67,13 @@ export default function App() {
 
       {/* Login Button */}
       <TouchableOpacity
-        className="bg-yellow-400 py-3 rounded-md items-center"
+        className="bg-yellow-400 items-center rounded-full py-2 "
         onPress={handleLogin}
       >
         <Text className="text-black font-bold text-lg">Đăng nhập</Text>
       </TouchableOpacity>
 
-      <Text className="self-center my-3 text-white">
+      <Text className="self-center my-3 text-white  ">
         <Text>Chưa có tài khoản?</Text>
         <Link className="text-yellow-400 ml-2" href="/(auth)/register">
           Đăng ký ngay
@@ -86,10 +86,10 @@ export default function App() {
       {/* Login with Google & Facebook */}
       <Text className="text-center text-gray-300 my-2">hoặc đăng nhập với</Text>
       <View className="flex-col space-y-3">
-        <TouchableOpacity className="bg-white py-3 rounded-md items-center">
+        <TouchableOpacity className="bg-white py-3 rounded-full items-center">
           <Text className="text-black">Google</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="bg-blue-600 py-3 rounded-md items-center">
+        <TouchableOpacity className="bg-blue-600 py-3 rounded-full items-center">
           <Text className="text-white">Facebook</Text>
         </TouchableOpacity>
       </View>

@@ -1,16 +1,18 @@
 import { Tabs } from "expo-router";
-import React from "react";
-import { Image, Platform, View } from "react-native";
-import { ViewStyle } from "react-native";
+import React, { useState } from "react";
+import { View, Platform, ViewStyle } from "react-native";
 import { HapticTab } from "@/components/HapticTab";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { icons } from "@/constants";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const [activeTab, setActiveTab] = useState<string>("Home");
 
+  const change = (focus: boolean) => {
+    return focus ? "#ffd800" : "white";
+  };
   return (
     <Tabs
       screenOptions={{
@@ -21,26 +23,61 @@ export default function TabLayout() {
           default: styles,
         }),
       }}
+      screenListeners={{
+        state: (e) => {
+          const index = e.data.state.index;
+          const routeName = e.data.state.routeNames[index];
+          setActiveTab(routeName);
+        },
+      }}
     >
       <Tabs.Screen
         name="Home"
         options={{
-          tabBarIcon: () => <Ionicons name="home" size={30} color={"white"} />,
-        }}
-      />
-      <Tabs.Screen
-        name="Library/index"
-        options={{
-          tabBarIcon: () => (
-            <Ionicons name="albums" size={30} color={"white"} />
+          tabBarIcon: ({ focused }) => (
+            <Ionicons name="home" size={30} color={change(focused)} />
           ),
         }}
       />
+
       <Tabs.Screen
-        name="Exam/index"
+        name="Library"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Ionicons name="folder-sharp" size={30} color={change(focused)} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="Exam"
         options={{
           tabBarIcon: () => (
-            <Ionicons name="notifications" size={30} color={"white"} />
+            <View
+              className={`bg-[#454e91] h-20 items-center w-20 justify-center relative -top-7 rounded-full`}
+            >
+              <View className="h-16 w-16 bg-[#ffd800] items-center justify-center rounded-full">
+                <Ionicons name="add" size={50} color={"white"} />
+              </View>
+            </View>
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="Notification"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Ionicons name="notifications" size={30} color={change(focused)} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="Profile"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Ionicons name="person-sharp" size={30} color={change(focused)} />
           ),
         }}
       />

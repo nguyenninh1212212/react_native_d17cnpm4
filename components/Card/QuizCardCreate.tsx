@@ -1,5 +1,6 @@
 import { QuizCardCreateProps } from "@/type/Card";
-import React from "react";
+import { useRouter } from "expo-router";
+import React, { useCallback } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
 interface payload {
@@ -8,8 +9,15 @@ interface payload {
 
 const QuizCardCreate: React.FC<payload> = ({ data }) => {
   const { title, user, questions, image } = data;
+  const router = useRouter();
+  const handlePress = useCallback(() => {
+    router.push({ pathname: "/(tabs)/Exam/[id]", params: { id: "1" } });
+  }, [router]);
   return (
-    <TouchableOpacity className="bg-white rounded-lg w-[48%] h-60 m-1 overflow-hidden shadow-md">
+    <TouchableOpacity
+      className="bg-white rounded-lg w-[48%] h-60 m-1 overflow-hidden shadow-md"
+      onPress={handlePress}
+    >
       <Image source={{ uri: image }} className="w-full h-28" />
 
       {/* Nội dung Card */}
