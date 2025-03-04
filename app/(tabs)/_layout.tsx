@@ -124,7 +124,7 @@ export default function TabLayout() {
           title: "",
           tabBarIcon: ({ color, focused }) => (
             <AnimatedTabIcon
-              name={"pin.square.fill" as string}
+              name={"book.fill" as string}
               color={color}
               focused={focused}
             />

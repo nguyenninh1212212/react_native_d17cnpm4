@@ -1,4 +1,5 @@
 import { Link } from "expo-router";
+import React from "react";
 import { Text, SafeAreaView, View, Image, ImageBackground } from "react-native";
 
 const ActionComponents = ({

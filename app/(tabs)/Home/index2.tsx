@@ -1,3 +1,4 @@
+import React from "react";
 import { Text, SafeAreaView, View } from "react-native";
 
 const HomeScreeen2 = () => {

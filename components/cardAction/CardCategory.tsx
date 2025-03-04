@@ -1,4 +1,5 @@
 import { Link } from "expo-router";
+import React from "react";
 import { View, Text, ImageBackground, Image } from "react-native";
 
 const CardCategory = ({
